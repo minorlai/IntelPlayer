@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 31
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':player-view')
+    def playerVersion = '2.18.3'
+    api "com.google.android.exoplayer:exoplayer-core:$playerVersion"
+    api "com.google.android.exoplayer:exoplayer-dash:$playerVersion"
+    api "com.google.android.exoplayer:exoplayer-hls:$playerVersion"
+    api "com.google.android.exoplayer:exoplayer-rtsp:$playerVersion"
+    api "com.google.android.exoplayer:extension-rtmp:$playerVersion"
+}
+
